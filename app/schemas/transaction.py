@@ -8,7 +8,7 @@ from app.schemas.category import CategoryResponse
 
 
 class TransactionBase(BaseModel):
-    amount: Decimal = Field(..., gt=0, decimal_places=2)
+    amount: Decimal = Field(..., gt=0)
     type: Literal["income", "expense", "transfer"]
     date: date
     description: Optional[str] = None
@@ -21,7 +21,7 @@ class TransactionCreate(TransactionBase):
 
 
 class TransactionUpdate(BaseModel):
-    amount: Optional[Decimal] = Field(None, gt=0, decimal_places=2)
+    amount: Optional[Decimal] = Field(None, gt=0)
     type: Optional[Literal["income", "expense", "transfer"]] = None
     date: Optional[date] = None
     description: Optional[str] = None
